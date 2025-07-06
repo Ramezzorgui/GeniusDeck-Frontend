@@ -34,4 +34,13 @@ export class StorageService {
 
     return false;
   }
+
+  public saveToken(token: string): void {
+  window.sessionStorage.setItem('auth-token', token);
+}
+
+public getToken(): string | null {
+  return window.sessionStorage.getItem('auth-token');
+}
+
 }
