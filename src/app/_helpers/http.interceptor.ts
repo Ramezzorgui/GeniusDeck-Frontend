@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpInterceptor,
+  HttpHandler,
+  HttpRequest,
+  HTTP_INTERCEPTORS,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -8,46 +15,41 @@ import { EventBusService } from '../_shared/event-bus.service';
 import { EventData } from '../_shared/event.class';
 
 @Injectable()
-export class HttpRequestInterceptor implements HttpInterceptor {
-  private isRefreshing = false;
-
-  constructor(private storageService: StorageService, private eventBusService: EventBusService) { }
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(
+    private storageService: StorageService,
+    private eventBusService: EventBusService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      withCredentials: true,
-    });
+    const token = this.storageService.getToken();
 
-    return next.handle(req).pipe(
-      catchError((error) => {
-        // logout when token is expired
-/*
+    let authReq = req;
+    
+    // ✅ Ajouter le token si disponible
+    if (token) {
+      authReq = req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + token)
+      });
+    }
+
+    return next.handle(authReq).pipe(
+      catchError((error: HttpErrorResponse) => {
+        // ✅ Gérer les erreurs 401 sauf sur /auth/signin
         if (
-          error instanceof HttpErrorResponse &&
-          !req.url.includes('auth/signin') &&
-          error.status === 401
+          error.status === 401 &&
+          !req.url.includes('/auth/signin')
         ) {
-          return this.handle401Error(req, next);
+          this.eventBusService.emit(new EventData('logout', null));
         }
-*/
+
         return throwError(() => error);
       })
     );
   }
-
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-    if (!this.isRefreshing) {
-      this.isRefreshing = true;
-
-      if (this.storageService.isLoggedIn()) {
-        this.eventBusService.emit(new EventData('logout', null));
-      }
-    }
-
-    return next.handle(request);
-  }
 }
 
-export const httpInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+// ✅ Fournisseur à inclure dans AppModule
+export const authInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
 ];

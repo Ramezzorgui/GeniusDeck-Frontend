@@ -1,0 +1,31 @@
+.navbar {
+  width: 100%;
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  background-color: #ffffff; /* Adjust background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Keep shadow */
+}
+
+.navbar .container-fluid {
+  padding: 0; /* Remove padding from container-fluid */
+  width: 100%; /* Ensure container-fluid takes full width */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #111827; /* Match your hero section text color */
+}
+
+.navbar .btn {
+  margin-left: 0.5rem;
+  color: #111827; /* Match button text color */
+}
+
+.navbar .btn-primary {
+  background-color: #2563eb; /* Match your CTA button color */
+  border-color: #2563eb;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #1d4ed8; /* Match hover effect */
+}

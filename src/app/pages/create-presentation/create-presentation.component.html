@@ -1,0 +1,72 @@
+<div class="brief-wrapper">
+  <h2 class="brief-title">Étape 1/3 : Décrivez votre présentation</h2>
+
+  <form (ngSubmit)="onSubmit()" class="form">
+    <input
+      [(ngModel)]="presentation.subject"
+      name="subject"
+      placeholder="Sujet"
+      class="input"
+      required
+    />
+
+    <select [(ngModel)]="presentation.duration" name="duration" class="input" required>
+      <option value="">Durée</option>
+      <option value="5">5 minutes</option>
+      <option value="15">15 minutes</option>
+      <option value="30">30 minutes</option>
+    </select>
+
+    <select [(ngModel)]="presentation.audience" name="audience" class="input" required>
+      <option value="">Audience</option>
+      <option>Étudiants</option>
+      <option>Professionnels</option>
+      <option>Grand public</option>
+    </select>
+
+    <textarea
+      [(ngModel)]="presentation.goal"
+      name="objectif"
+      placeholder="Objectif"
+      class="input"
+    ></textarea>
+
+    <textarea
+      [(ngModel)]="presentation.keyPoints"
+      name="keyPoints"
+      placeholder="Points clés"
+      class="input"
+    ></textarea>
+
+    <input type="file" (change)="onFileSelected($event)" class="input" accept="image/*" />
+
+    <button type="submit" class="btn-primary">Générer la structure</button>
+  </form>
+
+  <div *ngIf="uploadedImageUrl" class="mt-4 text-center">
+    <img [src]="uploadedImageUrl" alt="Aperçu de l’image" class="small-image" />
+  </div>
+
+  <div *ngIf="generatedStructure.length > 0" class="slide-container">
+    <h3 class="slide-title">Structure générée :</h3>
+
+    <div *ngFor="let slide of generatedStructure; let i = index" class="slide" [class.active]="i === currentSlide">
+      {{ slide }}
+    </div>
+
+    <div class="controls">
+      <button (click)="previousSlide()" [disabled]="currentSlide === 0" class="btn-primary">
+        Précédent
+      </button>
+      <button
+        (click)="nextSlide()"
+        [disabled]="currentSlide === generatedStructure.length - 1"
+        class="btn-primary"
+      >
+        Suivant
+      </button>
+    </div>
+
+    <p class="slide-counter">Slide {{ currentSlide + 1 }} / {{ generatedStructure.length }}</p>
+  </div>
+</div>

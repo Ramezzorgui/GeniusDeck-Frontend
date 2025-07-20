@@ -1,0 +1,11 @@
+<div class="container mt-4" *ngIf="slide">
+  <h2>Détails du Slide</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>ID :</strong> {{ slide.id }}</li>
+    <li class="list-group-item"><strong>Titre :</strong> {{ slide.title }}</li>
+    <li class="list-group-item"><strong>Contenu :</strong> {{ slide.content }}</li>
+    <li class="list-group-item"><strong>Layout :</strong> {{ slide.layout }}</li>
+    <li class="list-group-item"><strong>Position :</strong> {{ slide.position }}</li>
+    <li class="list-group-item"><strong>ID Présentation :</strong> {{ slide.presentation.id }}</li>
+  </ul>
+</div>

@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2>Historique de génération</h2>
+  <a routerLink="/generation-history/add" class="btn btn-success mb-3">+ Ajouter</a>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prompt</th>
+        <th>ID Présentation</th>
+        <th>Tokens Utilisés</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of histories">
+        <td>{{ h.id }}</td>
+        <td>{{ h.prompt }}</td>
+        <td>{{ h.presentation?.id || 'N/A' }}</td>
+        <td>{{ h.tokensUsed }}</td>
+        <td>
+          <button class="btn btn-info btn-sm me-1" (click)="view(h.id!)">Voir</button>
+          <button class="btn btn-primary btn-sm me-1" (click)="edit(h.id!)">Modifier</button>
+          <button class="btn btn-danger btn-sm" (click)="delete(h.id!)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

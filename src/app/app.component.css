@@ -1,0 +1,85 @@
+/* Barre de navigation principale */
+.top-navbar {
+  display: flex;
+  justify-content: space-between; /* Pousse les sections gauche et droite aux extrémités */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: 70px; /* Hauteur fixe */
+}
+
+/* Section de gauche */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Espace entre le logo et les liens admin */
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2563eb; /* Bleu de votre charte */
+  text-decoration: none;
+}
+
+/* Liens de l'admin */
+.admin-links {
+  display: flex;
+  gap: 1.5rem; /* Espace entre chaque lien admin */
+}
+
+.admin-links a {
+  text-decoration: none;
+  color: #374151; /* Gris foncé */
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent; /* Ligne de soulignement inactive */
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-links a:hover {
+  color: #111827; /* Noir doux */
+}
+
+.admin-links a.active {
+  color: #2563eb; /* Bleu pour le lien actif */
+  border-bottom-color: #2563eb; /* Soulignement pour le lien actif */
+}
+
+
+/* Section de droite */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.auth-links a, .user-info span, .user-info a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #34495e;
+}
+
+.auth-links .btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.user-info span {
+  font-weight: 500;
+}
+
+.logout-link {
+  cursor: pointer;
+  font-weight: 500;
+  color: #e74c3c; /* Rouge pour la déconnexion */
+}
+
+/* Contenu de la page principale */
+.page-content {
+  /* Vous pouvez ajouter un padding ici si nécessaire pour que le contenu
+     ne soit pas collé à la barre de navigation */
+  padding: 2rem;
+}

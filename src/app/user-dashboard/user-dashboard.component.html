@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2 class="dashboard-title">📚 Mes Présentations</h2>
+    <button routerLink="/presentations/new" class="btn-add">+ Ajouter une présentation</button>
+  </div>
+
+  <div class="cards-grid">
+    <div *ngFor="let pres of presentations" class="presentation-card">
+      <div class="card-header">
+        <h3>{{ pres.title }}</h3>
+        <p *ngIf="pres.description" class="card-description">{{ pres.description }}</p>
+      </div>
+      <div class="card-actions">
+        <button (click)="viewPresentation(pres.id!)" class="btn btn-view">Voir</button>
+        <button (click)="editPresentation(pres.id!)" class="btn btn-edit">Modifier</button>
+        <button (click)="deletePresentation(pres.id!)" class="btn btn-delete">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="presentations.length === 0" class="empty-message">
+    Aucune présentation disponible.
+  </p>
+</div>

@@ -1,0 +1,11 @@
+<div class="container mt-4" *ngIf="history">
+  <h2>Détails</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>ID :</strong> {{ history.id }}</li>
+    <li class="list-group-item"><strong>Prompt :</strong> {{ history.prompt }}</li>
+    <li class="list-group-item"><strong>Réponse :</strong> {{ history.response }}</li>
+    <li class="list-group-item"><strong>Tokens :</strong> {{ history.tokensUsed }}</li>
+    <li class="list-group-item"><strong>ID Présentation :</strong> {{ history.presentation.id }}</li>
+    <li class="list-group-item"><strong>Créé le :</strong> {{ history.createdAt }}</li>
+  </ul>
+</div>

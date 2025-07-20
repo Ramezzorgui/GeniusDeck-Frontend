@@ -1,0 +1,11 @@
+<div class="details-card" *ngIf="template">
+  <h2>Détails du Template</h2>
+
+  <div class="detail-row"><strong>Nom:</strong> {{ template.name }}</div>
+  <div class="detail-row"><strong>Catégorie:</strong> {{ template.category }}</div>
+  <div class="detail-row"><strong>Structure:</strong> {{ template.structure }}</div>
+  <div class="detail-row"><strong>Styles:</strong> {{ template.styles }}</div>
+  <div class="detail-row"><strong>Public:</strong> {{ template.isPublic ? 'Oui' : 'Non' }}</div>
+
+  <button class="btn btn-back" (click)="goBack()">⬅ Retour</button>
+</div>

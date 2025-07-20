@@ -1,0 +1,48 @@
+<div class="editor-container">
+  <header class="editor-header">
+    <button class="btn">💾 Sauvegarder</button>
+    <button class="btn">📤 Exporter</button>
+    <button class="btn">🔗 Partager</button>
+    <button class="btn">⚙️ Paramètres</button>
+  </header>
+
+  <div class="editor-body">
+    <!-- Colonne gauche : liste des slides -->
+    <aside class="slide-list">
+      <div
+        *ngFor="let slide of slides; let i = index"
+        (click)="selectSlide(i)"
+        [class.active]="i === currentSlide"
+        class="slide-item"
+      >
+        {{ i + 1 }}
+      </div>
+    </aside>
+
+    <!-- Zone droite : éditeur du contenu de la slide -->
+    <main class="slide-editor">
+      <h2>Slide {{ currentSlide + 1 }}/{{ slides.length }}</h2>
+
+      <input
+        type="text"
+        [(ngModel)]="slides[currentSlide].title"
+        class="slide-title"
+        placeholder="Titre de la slide"
+      />
+
+      <ul class="points-list">
+        <li *ngFor="let point of slides[currentSlide].content; let i = index">
+          <input
+            type="text"
+            [(ngModel)]="slides[currentSlide].content[i]"
+            class="point-input"
+            placeholder="Point clé"
+          />
+          <button (click)="removePoint(i)" class="btn-delete">×</button>
+        </li>
+      </ul>
+
+      <button (click)="addPoint()" class="btn">+ Ajouter un point</button>
+    </main>
+  </div>
+</div>

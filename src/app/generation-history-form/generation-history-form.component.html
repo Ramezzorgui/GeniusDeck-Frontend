@@ -1,0 +1,23 @@
+<form (ngSubmit)="submitForm()" class="mt-4">
+  <div class="mb-3">
+    <label class="form-label">Prompt</label>
+    <input class="form-control" [(ngModel)]="history.prompt" name="prompt" required />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Response</label>
+    <textarea class="form-control" [(ngModel)]="history.response" name="response" required></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Tokens Used</label>
+    <input type="number" class="form-control" [(ngModel)]="history.tokensUsed" name="tokensUsed" required />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">ID Présentation</label>
+    <input type="number" class="form-control" [(ngModel)]="history.presentation.id" name="presentationId" required />
+  </div>
+
+  <button type="submit" class="btn btn-success">Enregistrer</button>
+</form>

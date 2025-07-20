@@ -1,0 +1,167 @@
+/* Importation des variables de couleur pour une maintenance facile */
+:host {
+  --primary-blue: #2563eb;
+  --primary-gray: #6b7280;
+  --primary-white: #ffffff;
+  --font-title: 'Inter', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+.home-container {
+  width: 100%;
+  font-family: var(--font-body );
+}
+
+.hero-section {
+  background-color: transparent;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  max-width: 900px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111827; /* Noir doux */
+  line-height: 1.2;
+  max-width: 700px;
+  margin: 0 auto 1rem auto;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--primary-gray);
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.hero-cta-button {
+  font-family: var(--font-title);
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.hero-cta-button:hover {
+  background-color: #1d4ed8; /* Un bleu légèrement plus foncé */
+}
+
+.hero-cta-button:active {
+  transform: scale(0.98);
+}
+
+/* Section des étapes */
+.steps-section {
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 3rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.step-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: white; /* Bleu très clair */
+  margin-bottom: 1.5rem;
+}
+
+.step-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+  color: var(--primary-blue);
+}
+
+.step-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  color: var(--primary-gray);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+.navbar {
+  background-color: transparent;
+  box-shadow: none ;
+  border: none;
+}
+
+
+.navbar-brand {
+  color: white ;
+}
+
+.navbar-nav .nav-link {
+  color: white ;
+}
+
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-blue) ;
+}
+
+.home-container {
+  background-image: url('/assets/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+

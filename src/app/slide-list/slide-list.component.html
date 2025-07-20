@@ -1,0 +1,32 @@
+<div class="main-layout d-flex">
+  <!-- Contenu principal -->
+  <div class="content container mt-4 flex-fill">
+    <h2>Liste des Slides</h2>
+    <a routerLink="/slides/add" class="btn btn-success mb-3">Ajouter un Slide</a>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Position</th>
+          <th>Layout</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slide of slides">
+          <td>{{ slide.id }}</td>
+          <td>{{ slide.title }}</td>
+          <td>{{ slide.position }}</td>
+          <td>{{ slide.layout }}</td>
+          <td>
+            <button class="btn btn-info btn-sm me-1" (click)="viewDetails(slide.id!)">Voir</button>
+            <button class="btn btn-primary btn-sm me-1" (click)="editSlide(slide.id!)">Modifier</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteSlide(slide.id!)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

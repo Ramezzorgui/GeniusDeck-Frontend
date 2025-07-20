@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light shadow-sm">
+  <div class="d-flex justify-content-between w-100" style="padding: 0 1rem;">
+    <a class="navbar-brand fw-bold" routerLink="/">GeniusDeck</a>
+    
+    <div *ngIf="!isLoggedIn">
+      <a class="btn btn-link" routerLink="/login">Sign In</a>
+      <a class="btn btn-primary ms-2" routerLink="/register">Sign Up</a>
+    </div>
+
+    <div *ngIf="isLoggedIn" class="d-flex align-items-center">
+      <span class="me-3" style="color: #111827;">{{ username }}</span>
+      <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

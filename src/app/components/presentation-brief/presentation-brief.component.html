@@ -1,0 +1,47 @@
+<div class="container mt-4 p-4 border rounded shadow bg-white">
+  <h3 class="mb-4">Étape 1/3 : Décrivez votre présentation</h3>
+  <form [formGroup]="briefForm" (ngSubmit)="onSubmit()">
+
+    <!-- Sujet -->
+    <div class="form-group mb-3">
+      <label for="title">Sujet :</label>
+      <input id="title" class="form-control" formControlName="title" required />
+    </div>
+
+    <!-- Durée -->
+    <div class="form-group mb-3">
+      <label>Durée :</label><br />
+      <div class="form-check form-check-inline" *ngFor="let duration of durations">
+        <input type="radio" class="form-check-input" [value]="duration" formControlName="duration" />
+        <label class="form-check-label me-3">{{ duration }}</label>
+      </div>
+    </div>
+
+    <!-- Audience -->
+    <div class="form-group mb-3">
+      <label>Audience :</label><br />
+      <div class="form-check form-check-inline" *ngFor="let aud of audiences">
+        <input type="radio" class="form-check-input" [value]="aud" formControlName="audience" />
+        <label class="form-check-label me-3">{{ aud }}</label>
+      </div>
+    </div>
+
+    <!-- Objectif -->
+    <div class="form-group mb-3">
+      <label for="objective">Objectif :</label>
+      <textarea id="objective" class="form-control" formControlName="objective" rows="2"></textarea>
+    </div>
+
+    <!-- Points clés -->
+    <div class="form-group mb-3">
+      <label for="keyPoints">Points clés :</label>
+      <textarea id="keyPoints" class="form-control" formControlName="keyPoints" rows="3"></textarea>
+    </div>
+
+    <!-- Boutons -->
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-secondary me-2">Précédent</button>
+      <button type="submit" class="btn btn-primary">Générer la structure</button>
+    </div>
+  </form>
+</div>

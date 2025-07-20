@@ -1,0 +1,104 @@
+.editor-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #1e40af;
+}
+
+.editor-body {
+  display: flex;
+  gap: 20px;
+}
+
+.slide-list {
+  width: 80px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slide-item {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.slide-item.active {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.slide-editor {
+  flex-grow: 1;
+}
+
+.slide-title {
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.points-list {
+  list-style: none;
+  padding: 0;
+}
+
+.point-input {
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn-delete {
+  margin-left: 8px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+}

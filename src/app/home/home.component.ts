@@ -1,33 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+// Importez StorageService avec le bon chemin
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  content?: string;
+export class HomeComponent {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private router: Router,
+    // Injectez StorageService
+    private storageService: StorageService
+  ) { }
 
-  ngOnInit(): void {
-    this.userService.getPublicContent().subscribe({
-      next: data => {
-        this.content = data;
-      },
-      error: err => {
-        if (err.error) {
-          try {
-            const res = JSON.parse(err.error);
-            this.content = res.message;
-          } catch {
-            this.content = `Error with status: ${err.status} - ${err.statusText}`;
-          }
-        } else {
-          this.content = `Error with status: ${err.status}`;
-        }
-      }
-    });
+  startCreation(): void {
+    // Utilisez la méthode de StorageService pour vérifier la connexion
+    if (this.storageService.isLoggedIn()) {
+      // Si connecté, redirige vers le dashboard
+      this.router.navigate(['/dashboard']);
+    } else {
+      // Si non connecté, redirige vers la page d'inscription
+      this.router.navigate(['/login']);
+    }
   }
+
+  goToStart(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.router.navigate(['/create-presentation']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  
+
+  
 }

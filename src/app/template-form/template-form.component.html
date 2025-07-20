@@ -1,0 +1,24 @@
+<div class="main-card">
+  <h2>{{ isEdit ? 'Modifier' : 'Créer' }} un Template</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Nom :</label>
+    <input [(ngModel)]="form.name" name="name" required />
+
+    <label>Catégorie :</label>
+    <input [(ngModel)]="form.category" name="category" required />
+
+    <label>Structure :</label>
+    <textarea [(ngModel)]="form.structure" name="structure"></textarea>
+
+    <label>Styles :</label>
+    <textarea [(ngModel)]="form.styles" name="styles"></textarea>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="form.isPublic" name="isPublic" />
+      Public ?
+    </label>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
+</div>
