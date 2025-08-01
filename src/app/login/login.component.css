@@ -1,32 +1,163 @@
+/* Fond général avec dégradé animé */
+body {
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+/* Conteneur de la carte avec effet 3D + glassmorphism */
+.card-container.card {
+  width: 380px;
+  padding: 40px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: zoomInUp 0.7s ease forwards;
+}
+
+/* Animation Zoom + montée */
+@keyframes zoomInUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Image profil */
+.profile-img-card {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
 label {
   display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Inputs modernisés */
+input.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #ffffffaa;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+  background: #fff;
+}
+
+/* Bouton principal stylé */
+button.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  background: linear-gradient(135deg, #007bff, #00bfff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* Bouton Google */
+button.btn-danger {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  background: linear-gradient(135deg, #db4437, #c1351d);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
   margin-top: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.btn-danger:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(219, 68, 55, 0.4);
+}
+
+/* Erreurs et alertes */
+.invalid-feedback,
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  animation: fadeSlide 0.4s ease forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+.alert-danger {
+  background: #ffdddd;
+  color: #a94442;
+}
+
+.alert-success {
+  background: #ddffdd;
+  color: #3c763d;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {
+  .card-container.card {
+    width: 90%;
+    padding: 30px;
+  }
+
+  input.form-control,
+  button {
+    font-size: 14px;
+  }
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .card-container.card {
-  max-width: 400px !important;
-  padding: 40px 40px;
-}
-
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  margin: auto;
 }

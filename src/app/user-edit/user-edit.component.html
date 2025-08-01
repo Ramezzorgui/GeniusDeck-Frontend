@@ -11,12 +11,17 @@
       <label>Email</label>
       <input class="form-control" formControlName="email" />
     </div>
+    <div class="mb-3">
+      <label>Mot de passe</label>
+      <input type="password" class="form-control" formControlName="password" />
+    </div>
+
 
     <div class="mb-3">
       <label>Rôle</label>
       <select class="form-select" formControlName="role">
-        <option value="ROLE_USER">Utilisateur</option>
-        <option value="ROLE_ADMIN">Admin</option>
+        <option value="USER">Utilisateur</option>
+        <option value="ADMIN">Admin</option>
       </select>
     </div>
 

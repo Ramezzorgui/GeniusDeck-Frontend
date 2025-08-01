@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import { Router } from '@angular/router';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Auth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +24,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private auth: Auth
+    
   ) {}
 
   ngOnInit(): void {
@@ -51,8 +56,8 @@ export class LoginComponent implements OnInit {
   }
 
   redirectByRole(): void {
-    if (this.roles.includes('ROLE_ADMIN')) {
-      this.router.navigate(['/s']);
+    if (this.roles.includes('ADMIN')) {
+      this.router.navigate(['/dashboard1']);
     } else if (this.roles.includes('ROLE_USER')) {
       this.router.navigate(['/login']);
     } else {
@@ -63,4 +68,54 @@ export class LoginComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
+
+  signInWithGoogle(): void {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(this.auth, provider)
+    .then(async (result) => {
+      const user = result.user;
+      const idToken = await user.getIdToken(); // ✅ récupère le token JWT Firebase
+
+      console.log('Connexion Google réussie:', user);
+      console.log('ID Token:', idToken);
+
+      // 🔥 Envoie le token vers ton backend pour authentification
+      this.authService.loginWithGoogle(idToken).subscribe({
+        next: (data) => {
+          this.storageService.saveUser(data);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.roles = this.storageService.getUser().roles;
+          this.redirectByRole();
+        },
+        error: (err) => {
+          console.error('Erreur Backend:', err);
+          this.errorMessage = "Erreur backend: " + err.error.message;
+          this.isLoginFailed = true;
+        }
+      });
+    })
+    .catch((error) => {
+      console.error('Erreur Google:', error);
+      this.errorMessage = "Erreur Google: " + error.message;
+      this.isLoginFailed = true;
+    });
+}
+
+onForgotPassword() {
+  const email = this.form.username;
+
+  if (!email) {
+    alert("Veuillez saisir votre email pour réinitialiser le mot de passe.");
+    return;
+  }
+
+  this.authService.forgotPassword(email).subscribe({
+    next: () => alert("Un email de réinitialisation a été envoyé."),
+    error: (err) => alert("Erreur : " + err.error)
+  });
+}
+
+
+
 }

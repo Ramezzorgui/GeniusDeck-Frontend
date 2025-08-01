@@ -1,0 +1,36 @@
+.dynamic-preview {
+  width: 800px;
+  height: 450px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dynamic-preview h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.dynamic-preview p {
+  font-size: 18px;
+  color: #34495e;
+  margin: 0;
+}
+
+.preview-box {
+  flex: 1.2;
+  background-color: #ecf0f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}

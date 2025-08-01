@@ -1,21 +1,48 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
-  </header>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
-</div>
+<div class="dashboard-layout d-flex">
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+  <sidebar class="sidebar"></sidebar>
+
+  <main class="main-content d-flex justify-content-center align-items-center">
+    <div class="profile-card card shadow-lg animate__animated animate__fadeInUp">
+      <div class="card-body text-center">
+
+        <header class="mb-4">
+          <h3 class="display-5 fw-bold text-primary">
+            {{ currentUser.name }}
+          </h3>
+          <p class="text-muted mb-0">Profil utilisateur</p>
+        </header>
+
+        <div *ngIf="imageUrl" class="profile-image-container mx-auto mb-3 animate__animated animate__zoomIn">
+          <img [src]="imageUrl" alt="Image Profil" class="rounded-circle shadow-sm border border-primary" />
+        </div>
+
+        <button class="btn btn-outline-primary btn-sm mb-4" (click)="fileInput.click()">
+          <i class="material-icons align-middle me-1">photo_camera</i> Changer l'image
+        </button>
+        <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+
+        <button class="btn btn-primary mb-4 w-100" (click)="uploadImage()" [disabled]="!selectedFile || uploading">
+          <span *ngIf="!uploading">Uploader</span>
+          <span *ngIf="uploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="uploading"> Upload en cours...</span>
+        </button>
+
+        <hr />
+
+        <div class="text-start">
+          <p><strong>Email:</strong> {{ currentUser.email }}</p>
+
+          <strong>Rôles :</strong>
+          <ul class="list-group list-group-flush mt-2">
+            <li *ngFor="let role of currentUser.roles" class="list-group-item d-flex align-items-center ps-0 border-0 bg-transparent">
+              <i class="material-icons text-primary me-2">verified_user</i> {{ role }}
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</div>

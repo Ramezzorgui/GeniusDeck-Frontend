@@ -19,20 +19,30 @@ export class UserEditComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.userId = +this.route.snapshot.paramMap.get('id')!;
+ngOnInit(): void {
+  // Initialise le formulaire avec des valeurs vides ou par défaut
+  this.userForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    role: ['', Validators.required],
+    password: [''] 
+  });
 
-    this.userService.getUsers().subscribe(users => {
-      const user = users.find(u => u.id === this.userId);
-      if (user) {
-        this.userForm = this.fb.group({
-          name: [user.name, Validators.required],
-          email: [user.email, [Validators.required, Validators.email]],
-          role: [user.role, Validators.required]
-        });
-      }
-    });
-  }
+  this.userId = +this.route.snapshot.paramMap.get('id')!;
+
+  this.userService.getUsers().subscribe(users => {
+    const user = users.find(u => u.id === this.userId);
+    if (user) {
+      // Patch les valeurs récupérées dans le formulaire existant
+      this.userForm.patchValue({
+        name: user.name,
+        email: user.email,
+        role: user.role
+      });
+    }
+  });
+}
+
 
   onSubmit(): void {
     if (this.userForm.valid) {

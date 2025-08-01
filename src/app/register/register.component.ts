@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { inject } from '@angular/core';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-register',
@@ -16,7 +20,7 @@ export class RegisterComponent {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router, private auth: Auth) { }
 
   onSubmit(): void {
     const { username, email, password } = this.form;
@@ -33,4 +37,18 @@ export class RegisterComponent {
       }
     });
   }
+
+  signUpWithGoogle() {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(this.auth, provider)
+    .then((result) => {
+      const user = result.user;
+      console.log('Utilisateur connecté avec Google:', user);
+      this.router.navigate(['/']); // ou autre redirection
+    })
+    .catch((error) => {
+      console.error('Erreur de connexion Google:', error);
+    });
+}
+
 }

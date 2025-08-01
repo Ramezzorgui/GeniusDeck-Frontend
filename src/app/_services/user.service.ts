@@ -43,5 +43,20 @@ export class UserService {
 
   updateUser(id: number, user: Partial<User>): Observable<User> {
   return this.http.put<User>(`http://localhost:8080/users/${id}`, user);
+  }
+  getUsersCount(): Observable<{ count: number }> {
+      return this.http.get<{ count: number }>(`http://localhost:8080/users/count`);
+    }
+  getUserRolesCount(): Observable<{ [role: string]: number }> {
+  return this.http.get<{ [role: string]: number }>('http://localhost:8080/users/roles-count');
 }
+
+getActiveUsersMonthly(): Observable<{labels: string[], data: number[]}> {
+  return this.http.get<{labels: string[], data: number[]}>('http://localhost:8080/users/active-monthly');
+}
+
+updateImageUrl(userId: number, imageUrl: string) {
+  return this.http.put(`http://localhost:8080/users/${userId}/image`, { imageUrl });
+}
+
 }

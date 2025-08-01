@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PresentationService, Slide } from 'src/app/_services/presentation.service';
 import { PresentationDataService } from 'src/app/_services/presentation-data.service';
+import { TemplateService, Template } from 'src/app/_services/template.service';
+
 
 @Component({
   selector: 'app-create-presentation',
@@ -16,20 +18,22 @@ export class CreatePresentationComponent {
     duration: '',
     audience: '',
     goal: '',
-    keyPoints: ''
+    keyPoints: '',
+    templateId:''
   };
 
+  availableTemplates: Template[] = [];
   selectedFile: File | null = null;
   uploadedImageUrl: string = '';
   generatedStructure: Slide[] = [];
-  // Index slide courant pour diaporama
   currentSlide: number = 0;
 
   constructor(
     private presentationService: PresentationService,
     private presentationDataService: PresentationDataService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private templateService: TemplateService,
   ) {}
 
   // 📂 Gestion de sélection de fichier image
@@ -38,30 +42,38 @@ export class CreatePresentationComponent {
   }
 
   // 🚀 Envoi du formulaire
+// Dans create-presentation.component.ts
 onSubmit() {
-    const formData = { /* ... */ };
-
-    this.presentationService.generateStructure(formData).subscribe({
-      // Le type de 'structure' est maintenant explicitement ApiSlide[]
-      next: (structure: Slide[]) => {
-        // Cette assignation est maintenant correcte et cohérente
-        this.generatedStructure = structure;
-        this.currentSlide = 0;
-
-        // L'appel au service est maintenant valide car 'structure' a le bon type
-        this.presentationDataService.setSlides(structure);
-        console.log('✅ Structure générée et passée au service :', structure);
-
-        // Le reste de votre logique...
-        if (this.selectedFile) {
-          this.saveImageAndRedirect();
-        } else {
-          this.router.navigate(['/edit-presentation']);
-        }
-      },
-      error: (err) => console.error('❌ Erreur génération :', err)
-    });
+  if (!this.presentation.templateId) {
+    alert("Veuillez choisir un template.");
+    return;
   }
+
+  // ✅ AJOUTEZ CETTE LIGNE POUR STOCKER L'ID DE LA TEMPLATE
+  localStorage.setItem('selectedTemplateId', this.presentation.templateId);
+  console.log('Template ID stocké :', this.presentation.templateId); // Pour déboguer
+
+  const formData = {
+    subject: this.presentation.subject,
+    duration: this.presentation.duration,
+    audience: this.presentation.audience,
+    goal: this.presentation.goal,
+    keyPoints: this.presentation.keyPoints,
+    templateId: this.presentation.templateId
+  };
+
+  this.presentationService.generateStructure(formData).subscribe({
+    next: (structure: Slide[]) => {
+      this.generatedStructure = structure;
+      this.currentSlide = 0;
+      this.presentationDataService.setSlides(structure);
+      this.router.navigate(['/edit-presentation']);
+    },
+    error: (err) => console.error('❌ Erreur génération :', err)
+  });
+}
+
+
   // Upload puis redirection
   saveImageAndRedirect() {
     const data = new FormData();
@@ -94,4 +106,12 @@ onSubmit() {
       this.currentSlide--;
     }
   }
+
+  ngOnInit(): void {
+  this.templateService.getAll().subscribe({
+    next: (data) => (this.availableTemplates = data),
+    error: (err) => console.error('❌ Erreur chargement templates :', err)
+  });
+}
+
 }

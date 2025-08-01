@@ -26,7 +26,6 @@ import { SlideListComponent } from './slide-list/slide-list.component';
 import { GenerationHistoryDetailsComponent } from './generation-history-details/generation-history-details.component';
 import { GenerationHistoryFormComponent } from './generation-history-form/generation-history-form.component';
 import { GenerationHistoryListComponent } from './generation-history-list/generation-history-list.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
@@ -36,7 +35,16 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { PresentationBriefComponent } from './components/presentation-brief/presentation-brief.component';
 import { CreatePresentationComponent } from './pages/create-presentation/create-presentation.component';
 import { EditorPresentationComponent } from './pages/editor-presentation/editor-presentation.component';
-  
+import { SavedPresentationsComponent } from './pages/saved-presentation/saved-presentation.component';
+import { HistoryComponent } from './pages/history/history.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SideBarComponent } from './components/sidebar/sidebar.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -64,7 +72,6 @@ import { EditorPresentationComponent } from './pages/editor-presentation/editor-
     GenerationHistoryDetailsComponent,
     GenerationHistoryFormComponent,
     GenerationHistoryListComponent,
-    SideBarComponent,
     NavbarComponent,
     UsersComponent,
     UserEditComponent,
@@ -73,6 +80,14 @@ import { EditorPresentationComponent } from './pages/editor-presentation/editor-
     PresentationBriefComponent,
     CreatePresentationComponent,
     EditorPresentationComponent,
+    SavedPresentationsComponent,
+    HistoryComponent,
+    AdminDashboardComponent,
+    SideBarComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    
+   
 
     
   ],
@@ -84,6 +99,9 @@ import { EditorPresentationComponent } from './pages/editor-presentation/editor-
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    NgChartsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
     
   ],
   providers: [authInterceptorProviders], 

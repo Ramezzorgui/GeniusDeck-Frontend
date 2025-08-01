@@ -28,7 +28,11 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { PresentationBriefComponent } from './components/presentation-brief/presentation-brief.component';
 import { CreatePresentationComponent } from './pages/create-presentation/create-presentation.component';
 import { EditorPresentationComponent } from './pages/editor-presentation/editor-presentation.component';
-
+import { SavedPresentationsComponent } from './pages/saved-presentation/saved-presentation.component';
+import { HistoryComponent } from './pages/history/history.component';
+import { ForgotPasswordComponent } from 'src/app/components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import{AdminDashboardComponent} from  'src/app/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -62,8 +66,15 @@ const routes: Routes = [
   { path: 'dashboard', component: PresentationListComponent},
   { path: 'presentations/newww', component: PresentationBriefComponent },
   { path: 'dashboard', component: UserDashboardComponent },
-    { path: 'create-presentation', component: CreatePresentationComponent },
-{ path: 'edit-presentation', component: EditorPresentationComponent },
+  { path: 'create-presentation', component: CreatePresentationComponent },
+  { path: 'edit-presentation', component: EditorPresentationComponent },
+  { path: 'saved-presentations', component: SavedPresentationsComponent },
+  { path: 'history', component: HistoryComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+    { path: 'dashboard1', component: AdminDashboardComponent},
+
+
 
 ];
 

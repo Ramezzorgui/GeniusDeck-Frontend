@@ -108,5 +108,9 @@ export class PresentationService {
     return this.http.post<Slide[]>(`${API_URL}/generate-structure`, brief);
   }
 
+  getPresentationsCount(): Observable<{ count: number }> {
+    return this.http.get<{ count: number }>(`${API_URL}/count`)
+  .pipe(catchError(this.handleError));
+  }
 
 }

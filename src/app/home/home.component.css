@@ -1,4 +1,8 @@
-/* Importation des variables de couleur pour une maintenance facile */
+/* ================================================================== */
+/* ===           CSS AMÉLIORÉ ET ANIMÉ POUR VOTRE HOMEPAGE        === */
+/* ================================================================== */
+
+/* --- Variables et Polices (inchangées) --- */
 :host {
   --primary-blue: #2563eb;
   --primary-gray: #6b7280;
@@ -7,87 +11,153 @@
   --font-body: 'Open Sans', sans-serif;
 }
 
+/* --- Arrière-plan professionnel et conteneur principal --- */
 .home-container {
   width: 100%;
-  font-family: var(--font-body );
+  font-family: var(--font-body);
+  /* NOUVEL ARRIÈRE-PLAN : Dégradé subtil et moderne */
+  background: linear-gradient(170deg, #f3f4f6 0%, #ffffff 30%, #eef2ff 100%);
+  overflow-x: hidden; /* Empêche les débordements horizontaux lors des animations */
 }
 
+/* --- Section Héros --- */
 .hero-section {
-  background-color: transparent;
-  border-radius: 16px;
-  padding: 4rem 2rem;
-  margin: 0 auto;
-  max-width: 900px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 6rem 2rem 4rem 2rem;
 }
 
-
+/* --- Animations d'apparition pour le contenu du héros --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .hero-title {
   font-family: var(--font-title);
-  font-size: 3rem;
+  font-size: 3.5rem; /* Légèrement plus grand pour plus d'impact */
   font-weight: 800;
-  color: #111827; /* Noir doux */
+  color: #111827;
   line-height: 1.2;
-  max-width: 700px;
-  margin: 0 auto 1rem auto;
+  max-width: 750px;
+  margin: 0 auto 1.5rem auto;
+  /* Animation */
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .hero-subtitle {
   font-size: 1.125rem;
   color: var(--primary-gray);
   max-width: 600px;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 2rem auto;
   line-height: 1.6;
+  /* Animation avec délai */
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0; /* Commence caché */
 }
 
+/* --- Conteneur pour les 3 étapes sous le titre --- */
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  /* Animation avec délai */
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0; /* Commence caché */
+}
+
+.step {
+  font-size: 0.9rem;
+  color: var(--primary-gray);
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px; /* Forme de pilule */
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* --- Bouton principal --- */
 .hero-cta-button {
   font-family: var(--font-title);
   background-color: var(--primary-blue);
   color: var(--primary-white);
   border: none;
-  border-radius: 8px;
-  padding: 0.875rem 2rem;
-  font-size: 1rem;
+  border-radius: 10px; /* Un peu plus arrondi */
+  padding: 1rem 2.5rem; /* Plus grand pour plus de visibilité */
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
+  /* Animation */
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  opacity: 0; /* Commence caché */
+  /* Transition pour le survol */
+  transition: all 0.3s ease;
 }
 
 .hero-cta-button:hover {
-  background-color: #1d4ed8; /* Un bleu légèrement plus foncé */
+  background-color: #1d4ed8;
+  transform: translateY(-3px); /* Effet de lévitation */
+  box-shadow: 0 7px 25px rgba(37, 99, 235, 0.35);
 }
 
 .hero-cta-button:active {
-  transform: scale(0.98);
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
-/* Section des étapes */
+/* --- Section des cartes d'étapes --- */
 .steps-section {
-  padding: 5rem 1.5rem;
+  padding: 2rem 1.5rem 6rem 1.5rem;
   text-align: center;
 }
 
 .section-title {
   font-family: var(--font-title);
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #111827;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .step-card {
   text-align: center;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
+  background-color: var(--primary-white);
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  /* Animation d'apparition pour les cartes */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+  /* Transition pour le survol */
+  transition: all 0.3s ease;
+}
+
+/* Appliquer un délai d'animation différent pour chaque carte */
+.step-card:nth-child(1) { animation-delay: 0.8s; }
+.step-card:nth-child(2) { animation-delay: 1s; }
+.step-card:nth-child(3) { animation-delay: 1.2s; }
+
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-blue);
 }
 
 .step-icon-wrapper {
@@ -97,14 +167,25 @@
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background-color: white; /* Bleu très clair */
+  background-color: #eef2ff; /* Bleu très clair */
   margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background-color: var(--primary-blue);
 }
 
 .step-icon-wrapper svg {
   width: 32px;
   height: 32px;
   color: var(--primary-blue);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon-wrapper svg {
+  color: var(--primary-white);
 }
 
 .step-title {
@@ -120,7 +201,7 @@
   line-height: 1.6;
 }
 
-/* Responsive Design */
+/* --- Responsive Design (inchangé mais toujours important) --- */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
@@ -128,40 +209,414 @@
   .section-title {
     font-size: 2rem;
   }
+  .steps-container {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 }
 
-.navbar {
-  background-color: transparent;
-  box-shadow: none ;
+/* ================================================================== */
+/* ===     CODE CORRIGÉ POUR LE BOUTON "COMMENCER"                === */
+/* ================================================================== */
+
+/* --- Keyframes pour les animations (Assurez-vous qu'ils sont présents en haut de votre fichier) --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* --- Style principal du bouton (Version corrigée) --- */
+.hero-cta-button {
+  /* Mise en page Flex pour aligner le texte et l'icône */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  /* Propriétés de police et de forme restaurées */
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-white);
   border: none;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  position: relative; /* Nécessaire pour l'overflow et les pseudo-éléments */
+  overflow: hidden; /* Cache les parties du dégradé qui dépassent */
+
+  /* Arrière-plan en dégradé animé */
+  background: linear-gradient(120deg, #1d4ed8, #2563eb, #3b82f6);
+  background-size: 200% 200%; /* Important pour que l'animation du dégradé fonctionne */
+
+  /* Animations combinées */
+  animation:
+    fadeInUp 0.8s ease-out 0.6s forwards,
+    gradient-animation 4s ease infinite;
+  opacity: 0; /* Commence caché pour l'animation fadeInUp */
+
+  /* Transitions pour les effets au survol */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Lueur pulsée appliquée via un pseudo-élément */
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  /* Animation de la lueur */
+  animation: pulse-glow 2.5s infinite 1s; /* Démarre après 1s */
+  z-index: -1;
+}
+
+/* --- Style de l'icône dans le bouton --- */
+.hero-cta-button svg {
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transition avec "rebond" */
 }
 
 
-.navbar-brand {
-  color: white ;
+/* --- Effets au survol (Hover) --- */
+.hero-cta-button:hover {
+  transform: translateY(-4px) scale(1.02); /* Effet de lévitation plus prononcé */
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4); /* Ombre restaurée */
 }
 
-.navbar-nav .nav-link {
-  color: white ;
+/* L'icône bouge vers la droite au survol */
+.hero-cta-button:hover svg {
+  transform: translateX(5px);
 }
 
 
-.navbar-nav .nav-link:hover {
-  color: var(--primary-blue) ;
+/* --- Effet au clic (Active) --- */
+.hero-cta-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
+/* ================================================================== */
+/* ===           CSS FINAL AVEC GESTION DU DARK MODE              === */
+/* ================================================================== */
+
+/* --- Définition des variables pour les deux thèmes --- */
+:host {
+  /* Thème Clair (par défaut) */
+  --bg-gradient-start: #f3f4f6;
+  --bg-gradient-end: #eef2ff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --step-bg: rgba(255, 255, 255, 0.5);
+  --icon-wrapper-bg: #eef2ff;
+
+  /* Couleurs fixes */
+  --primary-blue: #2563eb;
+  --primary-white: #ffffff;
+  --font-title: 'Inter', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+/* Thème Sombre : redéfinition des variables quand .dark-mode est présent */
+.dark-mode {
+  --bg-gradient-start: #111827;
+  --bg-gradient-end: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --card-bg: #1f2937;
+  --card-border: #374151;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --step-bg: rgba(55, 65, 81, 0.5);
+  --icon-wrapper-bg: #374151;
+}
+
+/* --- Styles du bouton de changement de thème --- */
+.theme-switcher-container {
+  position: fixed;
+  top: 5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+.theme-switcher {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-switcher:hover {
+  transform: scale(1.1);
+  border-color: var(--primary-blue);
+}
+
+.theme-switcher svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Logique d'affichage des icônes lune/soleil */
+.theme-switcher .icon-sun { display: none; }
+.dark-mode .theme-switcher .icon-sun { display: block; color: #facc15; }
+.dark-mode .theme-switcher .icon-moon { display: none; }
+.theme-switcher .icon-moon { color: var(--text-secondary); }
+
+
+/* --- Styles généraux utilisant les variables --- */
 .home-container {
-  background-image: url('/assets/hero-bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  padding: 4rem 2rem;
-  color: white;
-  position: relative;
-  z-index: 1;
+  width: 100%;
+  font-family: var(--font-body);
+  background: linear-gradient(170deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  overflow-x: hidden;
+  transition: background 0.5s ease;
 }
 
+.main-content-section {
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
 
+.hero-section {
+  padding: 0;
+  margin-bottom: 6rem;
+}
 
+.hero-title {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  max-width: 750px;
+  margin: 0 auto 1.5rem auto;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.step {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background-color: var(--step-bg);
+  transition: all 0.3s ease;
+}
+
+/* --- Bouton principal --- */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-white);
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #1d4ed8, #2563eb, #3b82f6);
+  background-size: 200% 200%;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards, gradient-animation 4s ease infinite;
+  opacity: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  animation: pulse-glow 2.5s infinite 1s;
+  z-index: -1;
+}
+
+.hero-cta-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-cta-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+}
+
+.hero-cta-button:hover svg {
+  transform: translateX(5px);
+}
+
+.hero-cta-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* --- Section des cartes d'étapes --- */
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 30px var(--card-shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+.step-card:nth-child(1) { animation-delay: 0.8s; }
+.step-card:nth-child(2) { animation-delay: 1s; }
+.step-card:nth-child(3) { animation-delay: 1.2s; }
+
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px var(--card-shadow);
+  border-color: var(--primary-blue);
+}
+
+.step-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: var(--icon-wrapper-bg);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background-color: var(--primary-blue);
+}
+
+.step-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+  color: var(--primary-blue);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon-wrapper svg {
+  color: var(--primary-white);
+}
+
+.step-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .steps-container {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 

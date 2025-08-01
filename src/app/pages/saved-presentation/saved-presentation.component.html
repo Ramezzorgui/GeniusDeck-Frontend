@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <h2>📚 Mes Présentations Sauvegardées</h2>
+
+  <div *ngIf="savedPresentations.length === 0">
+    <p>Aucune présentation sauvegardée pour l’instant.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card" *ngFor="let pres of savedPresentations; let i = index">
+      <h3>{{ pres.title || 'Sans titre' }}</h3>
+      <p>Nombre de slides : {{ pres.slides.length }}</p>
+      <button (click)="loadPresentation(pres)" class="btn btn-success">📂 Charger</button>
+      <button (click)="deletePresentation(i)" class="btn btn-danger">🗑️ Supprimer</button>
+    </div>
+  </div>
+</div>

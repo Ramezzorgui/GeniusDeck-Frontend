@@ -81,6 +81,13 @@
         Signup failed!<br />{{ errorMessage }}
       </div>
     </form>
+    <div class="text-center mt-3">
+  <button type="button" class="btn btn-outline-danger" (click)="signUpWithGoogle()">
+    <img src="https://img.icons8.com/color/16/000000/google-logo.png" class="me-2" />
+    S'inscrire avec Google
+  </button>
+</div>
+
 
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!

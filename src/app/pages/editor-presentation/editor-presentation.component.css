@@ -1,79 +1,63 @@
+/* editor-presentation.component.css - STYLES DES TEMPLATES */
+
+/* =============================================================== */
+/* STYLES DE BASE (à conserver) */
+/* =============================================================== */
 .editor-container {
-  max-width: 1000px;
-  margin: 40px auto;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .editor-header {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  background-color: #2563eb;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn:hover {
-  background-color: #1e40af;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
 .editor-body {
   display: flex;
-  gap: 20px;
+  flex: 1;
+  position: relative;
 }
 
 .slide-list {
-  width: 80px;
-  background: #f3f4f6;
-  border-radius: 8px;
+  width: 100px;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .slide-item {
-  width: 100%;
   padding: 10px;
-  text-align: center;
-  margin-bottom: 8px;
-  background: white;
-  border-radius: 6px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
   cursor: pointer;
-  font-weight: bold;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .slide-item.active {
-  border-color: #2563eb;
-  background-color: #eff6ff;
+  background-color: #007bff;
+  color: white;
 }
 
 .slide-editor {
-  flex-grow: 1;
+  flex: 1;
+  padding: 20px;
+  transition: all 0.3s ease; /* Animation pour les changements de template */
 }
 
 .slide-title {
-  font-size: 20px;
-  font-weight: bold;
   width: 100%;
-  margin-bottom: 16px;
   padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .points-list {
@@ -81,24 +65,443 @@
   padding: 0;
 }
 
-.point-input {
-  padding: 8px 10px;
+.points-list li {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
-  width: 80%;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
 
-.btn-delete {
-  margin-left: 8px;
-  background-color: #ef4444;
+.point-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.btn-delete:hover {
-  background-color: #b91c1c;
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.template-indicator {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* =============================================================== */
+/* STYLES DES TEMPLATES */
+/* =============================================================== */
+
+/* Template par défaut */
+.slide-default {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.slide-default h2 {
+  color: #2c3e50;
+  font-family: 'Arial', sans-serif;
+}
+
+.slide-default .slide-title,
+.slide-default .point-input {
+  background-color: #ffffff;
+  color: #333333;
+  border-color: #ddd;
+}
+
+/* =============================================================== */
+/* Template Musée de Chak Wak - Style historique/culturel */
+/* =============================================================== */
+.slide-museum {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #F5DEB3;
+  font-family: 'Times New Roman', serif;
+}
+
+.slide-museum h2 {
+  color: #FFD700;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  border-bottom: 2px solid #FFD700;
+  padding-bottom: 10px;
+}
+
+.slide-museum .slide-title,
+.slide-museum .point-input {
+  background-color: rgba(245, 222, 179, 0.9);
+  color: #8B4513;
+  border-color: #FFD700;
+  font-family: 'Georgia', serif;
+}
+
+.slide-museum .btn {
+  background-color: #FFD700;
+  color: #8B4513;
+}
+
+.slide-museum .template-indicator {
+  background-color: rgba(255, 215, 0, 0.2);
+  border: 1px solid #FFD700;
+}
+
+/* =============================================================== */
+/* Template Rouge Test - Style moderne rouge */
+/* =============================================================== */
+.slide-red {
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+  color: #FFFFFF;
+  font-family: 'Arial', sans-serif;
+}
+
+.slide-red h2 {
+  color: #FFB6C1;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.slide-red .slide-title,
+.slide-red .point-input {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #8B0000;
+  border-color: #FFB6C1;
+  font-weight: 500;
+}
+
+.slide-red .btn {
+  background-color: #FFB6C1;
+  color: #8B0000;
+}
+
+.slide-red .template-indicator {
+  background-color: rgba(255, 182, 193, 0.2);
+  border: 1px solid #FFB6C1;
+}
+
+/* =============================================================== */
+/* Template Vert Nature - Style écologique */
+/* =============================================================== */
+.slide-nature {
+  background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+  color: #E8F5E9;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+.slide-nature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(129, 199, 132, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(129, 199, 132, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.slide-nature h2 {
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.slide-nature .slide-title,
+.slide-nature .point-input {
+  background-color: rgba(232, 245, 233, 0.95);
+  color: #2E7D32;
+  border-color: #81C784;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.slide-nature .btn {
+  background-color: #81C784;
+  color: #2E7D32;
+  position: relative;
+  z-index: 1;
+}
+
+.slide-nature .template-indicator {
+  background-color: rgba(129, 199, 132, 0.2);
+  border: 1px solid #81C784;
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================================== */
+/* Template Moderne Design - Style tech/moderne */
+/* =============================================================== */
+.slide-modern {
+  background: linear-gradient(135deg, #263238 0%, #37474F 100%);
+  color: #ECEFF1;
+  font-family: 'Lato', sans-serif;
+}
+
+.slide-modern h2 {
+  color: #00BCD4;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  border-left: 4px solid #00BCD4;
+  padding-left: 15px;
+}
+
+.slide-modern .slide-title,
+.slide-modern .point-input {
+  background-color: rgba(236, 239, 241, 0.95);
+  color: #263238;
+  border-color: #00BCD4;
+  font-family: 'Lato', sans-serif;
+  border-radius: 8px;
+}
+
+.slide-modern .btn {
+  background-color: #00BCD4;
+  color: #263238;
+  border-radius: 6px;
+}
+
+.slide-modern .template-indicator {
+  background-color: rgba(0, 188, 212, 0.1);
+  border: 1px solid #00BCD4;
+  border-radius: 6px;
+}
+
+/* =============================================================== */
+/* Template Vintage Classique - Style rétro/élégant */
+/* =============================================================== */
+.slide-vintage {
+  background: linear-gradient(135deg, #F5F5DC 0%, #F0E68C 100%);
+  color: #8B4513;
+  font-family: 'Times New Roman', serif;
+  border: 3px solid #D2691E;
+}
+
+.slide-vintage h2 {
+  color: #A0522D;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  text-align: center;
+  border-bottom: 2px dotted #A0522D;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.slide-vintage .slide-title,
+.slide-vintage .point-input {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #8B4513;
+  border: 2px solid #D2691E;
+  border-radius: 0;
+  font-family: 'Georgia', serif;
+}
+
+.slide-vintage .btn {
+  background-color: #D2691E;
+  color: #F5F5DC;
+  border-radius: 0;
+  border: 2px solid #A0522D;
+}
+
+.slide-vintage .template-indicator {
+  background-color: rgba(210, 105, 30, 0.1);
+  border: 2px dotted #A0522D;
+  border-radius: 0;
+}
+
+/* =============================================================== */
+/* STYLES POUR L'EXPORT PDF */
+/* =============================================================== */
+.slide-export-page {
+  width: 1280px;
+  min-height: 720px;
+  padding: 40px;
+  margin-bottom: 20px;
+  page-break-after: always;
+}
+
+.slide-export-page h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.slide-export-page ul {
+  font-size: 24px;
+  line-height: 1.6;
+  padding-left: 30px;
+}
+
+.slide-export-page li {
+  margin-bottom: 15px;
+}
+
+/* =============================================================== */
+/* MODAL POUR HISTORIQUE (POPUP) */
+/* =============================================================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #007bff;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #007bff;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-content ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-content ul li button {
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content ul li button:hover {
+  background-color: #0056b3;
+}
+
+/* =============================================================== */
+/* BARRE DE PERSONNALISATION EN HAUT */
+/* =============================================================== */
+.customization-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.customization-bar h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.customization-bar label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.customization-bar input,
+.customization-bar select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 120px;
+  font-size: 0.95rem;
+}
+
+/* Rendre les inputs transparents dans la version exportée */
+#presentationToExport input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  padding: 0;
+}
+/* Rendre les inputs transparents dans l'éditeur */
+.slide-title,
+.point-input {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  padding: 0 !important;
 }

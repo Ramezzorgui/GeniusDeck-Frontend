@@ -7,9 +7,9 @@ import { EventBusService } from 'src/app/_shared/event-bus.service';
 
 
 @Component({
-  selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.css']
+  selector: 'sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
 export class SideBarComponent implements OnInit {
   

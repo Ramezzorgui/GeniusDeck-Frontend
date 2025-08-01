@@ -1,0 +1,24 @@
+<div class="history-container">
+  <h2>📜 Historique des présentations sauvegardées</h2>
+
+  <div *ngIf="histories.length === 0" class="empty">
+    Aucune génération enregistrée.
+  </div>
+
+  <div *ngFor="let h of histories" class="history-card">
+    <h3>{{ h.prompt | slice:0:60 }}...</h3>
+
+    <p><strong>Date :</strong> {{ h.createdAt | date:'short' }}</p>
+    <p><strong>ID Présentation :</strong> {{ h.presentation?.id }}</p>
+
+    <div class="response-preview">
+      <strong>Contenu :</strong>
+      <p>{{ h.response | slice:0:200 }}...</p>
+    </div>
+
+    <div class="actions">
+      <button (click)="loadPresentation(h.presentation?.id)">📂 Charger</button>
+      <button class="delete-btn" (click)="deleteHistory(h.id!)">🗑️ Supprimer</button>
+    </div>
+  </div>
+</div>

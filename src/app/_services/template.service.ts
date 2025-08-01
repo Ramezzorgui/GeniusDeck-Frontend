@@ -11,6 +11,9 @@ export interface Template {
   structure: string;
   styles: string;
   isPublic: boolean;
+  createdBy?: any;
+  previewImage?: string;
+  mainColor?: string;
 }
 
 @Injectable({

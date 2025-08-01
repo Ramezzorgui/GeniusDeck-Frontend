@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  title = 'angular-16-jwt-auth';
 
   eventBusSub?: Subscription;
 

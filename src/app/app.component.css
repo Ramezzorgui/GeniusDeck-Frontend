@@ -81,5 +81,22 @@
 .page-content {
   /* Vous pouvez ajouter un padding ici si nécessaire pour que le contenu
      ne soit pas collé à la barre de navigation */
-  padding: 2rem;
+  padding: 0rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
 }

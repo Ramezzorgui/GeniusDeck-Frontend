@@ -43,8 +43,28 @@ export class AuthService {
       httpOptions
     );
   }
+  forgotPassword(email: string) {
+  return this.http.post('http://localhost:8080/api/auth/forgot-password', { email });
+}
+
+    resetPassword(token: string, newPassword: string): Observable<any> {
+      return this.http.post<any>(`${AUTH_API}reset-password`, {
+        token,
+        newPassword
+      }, httpOptions);
+    }
+
+
 
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
+
+  loginWithGoogle(idToken: string): Observable<any> {
+  return this.http.post(`http://localhost:8080/api/auth/google-login`, {}, {
+    headers: {
+      'Authorization': `Bearer ${idToken}`
+    }
+  });
+}
 }

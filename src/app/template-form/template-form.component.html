@@ -3,13 +3,24 @@
 
   <form (ngSubmit)="onSubmit()">
     <label>Nom :</label>
-    <input [(ngModel)]="form.name" name="name" required />
-
+    <input [(ngModel)]="form.name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && name.touched" class="error">Le nom est obligatoire.</div>
     <label>Catégorie :</label>
     <input [(ngModel)]="form.category" name="category" required />
+    
 
     <label>Structure :</label>
-    <textarea [(ngModel)]="form.structure" name="structure"></textarea>
+<textarea
+  [(ngModel)]="form.structure"
+  name="structure"
+  rows="6"
+  placeholder='{
+  "sections": [
+    { "type": "title", "content": "Titre ici" },
+    { "type": "text", "content": "Texte ici" }
+  ]
+}'
+></textarea>
 
     <label>Styles :</label>
     <textarea [(ngModel)]="form.styles" name="styles"></textarea>

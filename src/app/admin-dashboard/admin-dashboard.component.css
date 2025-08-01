@@ -1,0 +1,64 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+/* Sidebar toujours à gauche */
+.sidebar {
+  width: 250px;
+  background-color: white;
+  color: white;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.dashboard-container {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto; /* centre le contenu dans l'espace disponible */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.stats-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.card {
+  background: #f8f9fa;
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.charts-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.chart-card {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}

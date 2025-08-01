@@ -10,6 +10,8 @@ import { StorageService } from '../_services/storage.service';
 })
 export class HomeComponent {
 
+  isDarkMode = false;
+
   constructor(
     private router: Router,
     // Injectez StorageService
@@ -35,7 +37,9 @@ export class HomeComponent {
     }
   }
 
-  
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+  }
 
   
 }

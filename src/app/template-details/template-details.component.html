@@ -1,11 +1,40 @@
-<div class="details-card" *ngIf="template">
-  <h2>Détails du Template</h2>
+<div class="template-details-container">
+  <button class="back-button" (click)="goBack()">🔙 Retour</button>
 
-  <div class="detail-row"><strong>Nom:</strong> {{ template.name }}</div>
-  <div class="detail-row"><strong>Catégorie:</strong> {{ template.category }}</div>
-  <div class="detail-row"><strong>Structure:</strong> {{ template.structure }}</div>
-  <div class="detail-row"><strong>Styles:</strong> {{ template.styles }}</div>
-  <div class="detail-row"><strong>Public:</strong> {{ template.isPublic ? 'Oui' : 'Non' }}</div>
+  <div *ngIf="template" class="template-presentation">
+    <!-- Aperçu dynamique du template -->
+    <div class="preview-box">
+      <div
+        *ngIf="parsedStructure?.sections?.length; else noPreview"
+        [ngStyle]="parsedStyles"
+        class="dynamic-preview"
+      >
+        <div *ngFor="let section of parsedStructure.sections">
+          <ng-container [ngSwitch]="section.type">
+            <h2 *ngSwitchCase="'title'">{{ section.content || 'Titre par défaut' }}</h2>
+              <p *ngSwitchCase="'text'">{{ section.content || '🚨 Contenu manquant !' }}</p>
+            <div *ngSwitchDefault>Type inconnu</div>
+          </ng-container>
+        </div>
+      </div>
 
-  <button class="btn btn-back" (click)="goBack()">⬅ Retour</button>
+      <ng-template #noPreview>
+        <div class="no-preview">Aperçu indisponible</div>
+      </ng-template>
+    </div>
+
+    <!-- Détails du template -->
+    <div class="info-box">
+      <h1>{{ template.name }}</h1>
+      <p><strong>Catégorie :</strong> {{ template.category }}</p>
+      <p><strong>Structure :</strong> {{ template.structure }}</p>
+      <p><strong>Styles :</strong> {{ template.styles }}</p>
+      <p>
+        <strong>Public :</strong>
+        <span [ngClass]="template.isPublic ? 'public-yes' : 'public-no'">
+          {{ template.isPublic ? 'Oui' : 'Non' }}
+        </span>
+      </p>
+    </div>
+  </div>
 </div>

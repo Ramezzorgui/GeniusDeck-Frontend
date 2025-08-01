@@ -22,6 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    if (req.url.includes('cloudinary.com')) {
+    return next.handle(req);
+  }
     const token = this.storageService.getToken();
 
     let authReq = req;

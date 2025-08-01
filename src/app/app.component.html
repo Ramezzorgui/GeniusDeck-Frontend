@@ -4,15 +4,7 @@
   <!-- Section de gauche : Logo et liens Admin -->
   <div class="navbar-left">
     <a class="navbar-brand" routerLink="/">GeniusDeck</a>
-
-    <!-- ✅ Ces liens ne s'affichent que si l'utilisateur est un admin -->
-    <div *ngIf="showAdminBoard" class="admin-links">
-      <a routerLink="/AdminDashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/users" routerLinkActive="active">Utilisateurs</a>
-      <a routerLink="/templates" routerLinkActive="active">Templates</a>
-      <a routerLink="/presentations" routerLinkActive="active">Présentations</a>
-      <!-- Ajoutez d'autres liens admin ici si nécessaire -->
-    </div>
+    
   </div>
 
   <!-- Section de droite : Authentification -->
@@ -25,9 +17,12 @@
 
     <!-- Affiche le nom et "Logout" si l'utilisateur est connecté -->
     <div *ngIf="isLoggedIn" class="user-info">
-      <span>{{ username }}</span>
-      <a (click)="logout()" class="logout-link">Logout</a>
-    </div>
+  <a [routerLink]="['/profile']" class="profile-link">
+    {{ username }}
+  </a>
+  <a (click)="logout()" class="logout-link">Logout</a>
+</div>
+
   </div>
 
 </nav>

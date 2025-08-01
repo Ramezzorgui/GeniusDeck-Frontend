@@ -31,21 +31,31 @@
       class="input"
     ></textarea>
 
-    <textarea
-      [(ngModel)]="presentation.keyPoints"
-      name="keyPoints"
-      placeholder="Points clés"
-      class="input"
-    ></textarea>
 
-    <input type="file" (change)="onFileSelected($event)" class="input" accept="image/*" />
+
+<h3 class="brief-title">Étape 2/3 : Choisissez un template</h3>
+<div class="template-picker">
+  <div
+    *ngFor="let t of availableTemplates"
+    class="template-option"
+    [class.selected]="presentation.templateId === t.id?.toString()"
+  (click)="t.id !== undefined && (presentation.templateId = t.id.toString())"
+
+  >
+    <div
+      class="template-color-preview"
+      [style.backgroundColor]="t.mainColor || '#e5e7eb'"
+    ></div>
+    <div class="template-label">{{ t.name }}</div>
+    <div class="template-category">{{ t.category }}</div>
+  </div>
+</div>
+
+
+
 
     <button type="submit" class="btn-primary">Générer la structure</button>
   </form>
-
-  <div *ngIf="uploadedImageUrl" class="mt-4 text-center">
-    <img [src]="uploadedImageUrl" alt="Aperçu de l’image" class="small-image" />
-  </div>
 
   <div *ngIf="generatedStructure.length > 0" class="slide-container">
     <h3 class="slide-title">Structure générée :</h3>
