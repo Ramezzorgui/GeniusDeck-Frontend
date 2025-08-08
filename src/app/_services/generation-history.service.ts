@@ -15,7 +15,7 @@ export interface GenerationHistory {
   providedIn: 'root'
 })
 export class GenerationHistoryService {
-  private apiUrl = 'http://localhost:8080/api/generationHistory';
+  private apiUrl = 'https://geniusdeck-backend-production.up.railway.app/api/generationHistory';
 
   constructor(private http: HttpClient) {}
 

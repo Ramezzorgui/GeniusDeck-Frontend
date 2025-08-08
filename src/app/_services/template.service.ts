@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/templates';
+const API_URL = 'https://geniusdeck-backend-production.up.railway.app/api/templates';
 
 export interface Template {
   id?: number;

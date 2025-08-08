@@ -8,7 +8,7 @@ import { SlideContent } from '../models/SlideContent';
   providedIn: 'root'
 })
 export class GeminiService {
-  private apiUrl = 'http://localhost:8080/api/presentations/generate-structure';
+  private apiUrl = 'https://geniusdeck-backend-production.up.railway.app/api/presentations/generate-structure';
 
   constructor(private http: HttpClient) {}
 

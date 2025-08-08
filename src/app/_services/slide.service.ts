@@ -15,7 +15,7 @@ export interface Slide {
   providedIn: 'root'
 })
 export class SlideService {
-  private apiUrl = 'http://localhost:8080/slides';
+  private apiUrl = 'https://geniusdeck-backend-production.up.railway.app/slides';
 
   constructor(private http: HttpClient) {}
 
