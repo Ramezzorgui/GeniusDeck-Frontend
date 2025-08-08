@@ -81,32 +81,6 @@
 
   </div>
 </section>
-<!-- 📝 Section d'ajout de commentaire - visible seulement si connecté -->
-<section class="add-comment-section" *ngIf="isLoggedIn">
-  <h2 class="section-title comment-title">📝 Partagez votre avis</h2>
-  <form (submit)="submitComment()" class="comment-form">
-    <input [(ngModel)]="newComment.username" name="username" placeholder="Votre nom" required />
-    <textarea [(ngModel)]="newComment.content" name="content" placeholder="Votre commentaire" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
-
-<section class="latest-comments">
-  <h2 class="section-title">💡 Ce qu'en disent nos utilisateurs</h2>
-  <div class="steps-grid">
-    <div *ngFor="let comment of comments" class="step-card comment-card">
-      <div class="step-icon-wrapper">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M7.5 8.25h9m-9 3.75h9M3.75 6.75A2.25 2.25 0 0 1 6 4.5h12a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 18 19.5H6a2.25 2.25 0 0 1-2.25-2.25V6.75z" />
-        </svg>
-      </div>
-      <h3 class="step-title">{{ comment.username }}</h3>
-      <p class="step-description">{{ comment.content }}</p>
-      <small class="comment-date">{{ comment.createdAt | date:'short' }}</small>
-    </div>
-  </div>
-</section>
   </section>
 
 </div>

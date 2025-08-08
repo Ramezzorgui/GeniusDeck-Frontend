@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
 import { UserService } from 'src/app/_services/user.service';
 import { PresentationService } from 'src/app/_services/presentation.service'
-import { CommentService } from 'src/app/_services/comment.service'
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,7 +12,6 @@ export class AdminDashboardComponent implements OnInit {
   totalUsers = 0;                // valeur initiale à 0
   activeUsers = 750;
   presentationsGenerated = 0;
-  allComments: CommentService[] = [];
 
   public pieChartData: ChartConfiguration<'pie'>['data'] = {
     labels: ['Admin', 'User', 'Anonym'],
@@ -43,8 +41,7 @@ export class AdminDashboardComponent implements OnInit {
   };
 
   constructor(private userService: UserService,
-    private presentationService: PresentationService,
-  private commentService: CommentService) {}
+    private presentationService: PresentationService) {}
 
   ngOnInit(): void {
     this.loadTotalUsers();
