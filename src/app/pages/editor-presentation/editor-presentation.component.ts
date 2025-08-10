@@ -4,8 +4,6 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { TemplateService, Template } from 'src/app/_services/template.service';
 import { ActivatedRoute } from '@angular/router';
-import PptxGenJS from "pptxgenjs";
-import Pickr from '@simonwep/pickr';
 
 
 
@@ -182,41 +180,7 @@ exportCurrentSlideAsImage(format: 'png' | 'jpeg') {
   });
 }
 
-exportAsPptx(): void {
-  let pptx = new PptxGenJS();
 
-  this.slides.forEach((slideData, index) => {
-    let slide = pptx.addSlide();
-
-    slide.addText(slideData.title || `Slide ${index + 1}`, {
-      x: 0.5,
-      y: 0.5,
-      w: 9, 
-      h: 1,
-      fontSize: this.titleFontSize || 32,
-      bold: true,
-      color: "2F5496", 
-      align: "center"
-    });
-
-    let pointsText = slideData.content
-      .map(point => `• ${point}`)
-      .join("\n");
-
-    slide.addText(pointsText, {
-      x: 1,
-      y: 1.2, 
-      w: 8,
-      h: 4,
-      fontSize: this.contentFontSize || 20,
-      color: "000000",
-      align: "left",
-      bullet: false 
-    });
-  });
-
-  pptx.writeFile({ fileName: "presentation_office365.pptx" });
-}
 
 
   savePresentation() {
