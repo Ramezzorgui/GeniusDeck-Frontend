@@ -5,12 +5,16 @@
       <div class="dropdown">
   <button class="btn">📤 Exporter ▼</button>
   <div class="dropdown-content">
-  <a (click)="exportAsPDF()">
-    <i class="fas fa-file-pdf"></i> Exporter en PDF
-  </a>
-
-</div>
-
+    <a (click)="exportAsPDF()">
+      <i class="fas fa-file-pdf"></i> Exporter en PDF
+    </a>
+    <a (click)="exportCurrentSlideAsImage('png')">
+      <i class="fas fa-file-image"></i> Slide actuelle (PNG)
+    </a>
+    <a (click)="exportCurrentSlideAsImage('jpeg')">
+      <i class="fas fa-file-image"></i> Slide actuelle (JPG)
+    </a>
+  </div>
 </div>
 
 
