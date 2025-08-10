@@ -28,10 +28,10 @@
             "styles": [
               "src/styles.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-              
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "node_modules/@simonwep/pickr/dist/themes/classic.min.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/@simonwep/pickr/dist/pickr.min.js"]
           },
           "configurations": {
             "production": {

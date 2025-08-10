@@ -5,6 +5,8 @@ import html2canvas from 'html2canvas';
 import { TemplateService, Template } from 'src/app/_services/template.service';
 import { ActivatedRoute } from '@angular/router';
 import PptxGenJS from "pptxgenjs";
+import Pickr from '@simonwep/pickr';
+
 
 
 
